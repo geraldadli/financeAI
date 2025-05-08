@@ -1,0 +1,168 @@
+import { FinancialProfile, SavingRecommendation, InvestmentRecommendation, TaxRecommendation } from '../types/financial';
+
+// Mock financial profile
+export const mockFinancialProfile: FinancialProfile = {
+  monthlyIncome: 5800,
+  monthlySavings: 1200,
+  monthlyExpenses: 4600,
+  totalSavings: 34500,
+  totalDebt: 18600,
+  investments: [
+    {
+      id: '1',
+      name: 'S&P 500 Index Fund',
+      type: 'stock',
+      value: 45000,
+      returns: 8.5,
+      risk: 'medium'
+    },
+    {
+      id: '2',
+      name: 'Treasury Bonds',
+      type: 'bond',
+      value: 25000,
+      returns: 4.2,
+      risk: 'low'
+    },
+    {
+      id: '3',
+      name: 'Tech Growth Fund',
+      type: 'stock',
+      value: 15000,
+      returns: 12.8,
+      risk: 'high'
+    },
+    {
+      id: '4',
+      name: 'Bitcoin',
+      type: 'crypto',
+      value: 8000,
+      returns: 24.5,
+      risk: 'high'
+    },
+    {
+      id: '5',
+      name: 'High-Yield Savings',
+      type: 'cash',
+      value: 18000,
+      returns: 3.5,
+      risk: 'low'
+    }
+  ],
+  goals: [
+    {
+      id: '1',
+      name: 'Retirement Fund',
+      targetAmount: 1000000,
+      currentAmount: 150000,
+      targetDate: new Date('2050-01-01'),
+      category: 'retirement'
+    },
+    {
+      id: '2',
+      name: 'House Down Payment',
+      targetAmount: 80000,
+      currentAmount: 45000,
+      targetDate: new Date('2025-06-01'),
+      category: 'house'
+    },
+    {
+      id: '3',
+      name: 'Emergency Fund',
+      targetAmount: 30000,
+      currentAmount: 24000,
+      targetDate: new Date('2023-12-31'),
+      category: 'emergency'
+    },
+    {
+      id: '4',
+      name: 'Dream Vacation',
+      targetAmount: 12000,
+      currentAmount: 3800,
+      targetDate: new Date('2024-07-15'),
+      category: 'vacation'
+    }
+  ]
+};
+
+// Mock recommendations
+export const mockSavingRecommendations: SavingRecommendation[] = [
+  {
+    id: '1',
+    title: 'Reduce Subscription Services',
+    description: 'You\'re spending $95/month on streaming and subscription services. Consider consolidating to save up to $45 monthly.',
+    potentialSaving: 540,
+    difficulty: 'easy',
+    category: 'subscriptions'
+  },
+  {
+    id: '2',
+    title: 'Refinance Your Auto Loan',
+    description: 'Current interest rate is 5.8%. Refinancing could reduce this to 3.9%, saving you money over the loan term.',
+    potentialSaving: 1200,
+    difficulty: 'medium',
+    category: 'debt'
+  },
+  {
+    id: '3',
+    title: 'Optimize Utility Usage',
+    description: 'Your electricity bills are 20% higher than average. Simple changes could reduce this significantly.',
+    potentialSaving: 420,
+    difficulty: 'easy',
+    category: 'bills'
+  }
+];
+
+export const mockInvestmentRecommendations: InvestmentRecommendation[] = [
+  {
+    id: '1',
+    title: 'Increase Index Fund Allocation',
+    description: 'Consider moving some of your high-risk investments to index funds for more stable long-term growth.',
+    potentialReturn: 7.2,
+    risk: 'low',
+    timeHorizon: 'long'
+  },
+  {
+    id: '2',
+    title: 'Add I-Bonds to Your Portfolio',
+    description: 'I-Bonds are currently yielding over 6% and are government-backed, making them ideal for your safety allocation.',
+    potentialReturn: 6.5,
+    risk: 'low',
+    timeHorizon: 'medium'
+  },
+  {
+    id: '3',
+    title: 'Diversify with International Stocks',
+    description: 'Your portfolio is heavily US-focused. Adding international exposure could improve risk-adjusted returns.',
+    potentialReturn: 8.8,
+    risk: 'medium',
+    timeHorizon: 'long'
+  }
+];
+
+export const mockTaxRecommendations: TaxRecommendation[] = [
+  {
+    id: '1',
+    title: 'Maximize 401(k) Contributions',
+    description: 'You\'re not maxing out your 401(k). Increasing contributions could save up to $2,200 in taxes this year.',
+    potentialSaving: 2200,
+    relevance: 'high',
+    deadline: new Date('2023-12-31')
+  },
+  {
+    id: '2',
+    title: 'Tax-Loss Harvesting Opportunity',
+    description: 'Consider selling underperforming investments to offset gains and reduce your tax liability.',
+    potentialSaving: 1500,
+    relevance: 'medium',
+    deadline: new Date('2023-12-31')
+  },
+  {
+    id: '3',
+    title: 'Open a Health Savings Account (HSA)',
+    description: 'With your high-deductible health plan, an HSA could provide triple tax advantages.',
+    potentialSaving: 980,
+    relevance: 'high',
+    deadline: null
+  }
+];
