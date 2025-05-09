@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCurrency } from '../../contexts/CurrencyContext';
 
 interface CurrencyTimeZoneProps {
   currency: string;
@@ -6,8 +7,14 @@ interface CurrencyTimeZoneProps {
 }
 
 const CurrencyTimeZone: React.FC<CurrencyTimeZoneProps> = ({ currency, timeZone }) => {
-  const [curr, setCurr] = useState(currency);
+  const { currency: ctxCurrency, setCurrency } = useCurrency();
+  const [curr, setCurr] = useState(ctxCurrency);
   const [tz, setTz] = useState(timeZone);
+
+  const handleChange = (value: string) => {
+    setCurr(value);
+    setCurrency(value);
+  };
 
   return (
     <section className="settings-section">
@@ -17,7 +24,7 @@ const CurrencyTimeZone: React.FC<CurrencyTimeZoneProps> = ({ currency, timeZone 
           <label className="block text-sm mb-1">Default Currency</label>
           <select
             value={curr}
-            onChange={e => setCurr(e.target.value)}
+            onChange={e => handleChange(e.target.value)}
             className="settings-select"
           >
             {['USD','EUR','GBP','IDR','JPY'].map(c => (

@@ -3,6 +3,7 @@ import { RecommendationType } from '../../types/financial';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { ArrowRight, TrendingUp, Lightbulb, Coins } from 'lucide-react';
+import { useFormatCurrency } from '../../utils/formatCurrency';
 
 interface RecommendationCardProps {
   recommendation: RecommendationType;
@@ -10,6 +11,8 @@ interface RecommendationCardProps {
 }
 
 const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation, type }) => {
+  const format = useFormatCurrency();
+
   // Determine icon and color based on recommendation type
   const getTypeInfo = () => {
     switch (type) {
@@ -39,36 +42,44 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
   return (
     <Card className="hover:shadow-md transition-shadow duration-300">
       <div className="flex items-start space-x-3 mb-3">
-        <div className={`p-2 rounded-lg ${bgColor}`}>
-          {icon}
-        </div>
+        <div className={`p-2 rounded-lg ${bgColor}`}>{icon}</div>
         <div className="flex-1">
-          <h4 className="text-lg font-medium text-gray-800">{recommendation.title}</h4>
+          <h4 className="text-lg font-medium text-gray-800">
+            {recommendation.title}
+          </h4>
+
+          {/* Relevance / Difficulty / Risk badges */}
           {'relevance' in recommendation && (
-            <span className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}>
+            <span
+              className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}
+            >
               {recommendation.relevance} relevance
             </span>
           )}
           {'difficulty' in recommendation && (
-            <span className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}>
+            <span
+              className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}
+            >
               {recommendation.difficulty} difficulty
             </span>
           )}
           {'risk' in recommendation && (
-            <span className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}>
+            <span
+              className={`inline-block px-2 py-1 text-xs rounded-full ${textColor} ${bgColor} mt-1`}
+            >
               {recommendation.risk} risk
             </span>
           )}
         </div>
       </div>
-      
+
       <p className="text-gray-600 mb-4">{recommendation.description}</p>
-      
+
       <div className="flex justify-between items-center">
         <div>
           {'potentialSaving' in recommendation && (
             <p className="text-amber-600 font-medium">
-              Save up to ${recommendation.potentialSaving.toLocaleString()}
+              Save up to {format(recommendation.potentialSaving)}
             </p>
           )}
           {'potentialReturn' in recommendation && (

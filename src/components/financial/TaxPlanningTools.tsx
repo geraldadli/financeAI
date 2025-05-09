@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { useFormatCurrency } from '../../utils/formatCurrency';
 
 const TaxPlanningTools: React.FC = () => {
   const [income, setIncome] = useState<number>(0);
   const [deductions, setDeductions] = useState<number>(0);
-  const estimatedTax = (income - deductions) * 0.2; // simple 20% estimator
+
+  const { rate } = useCurrency();
+  const format = useFormatCurrency();
+
+  const estimatedTax = (income - deductions) * 0.2;
+  const convertedTax = estimatedTax * rate;
 
   return (
     <section className="tax-section">
@@ -29,10 +36,16 @@ const TaxPlanningTools: React.FC = () => {
         </div>
         <div className="flex flex-col justify-end">
           <div className="text-gray-600">Estimated Tax:</div>
-          <div className="text-xl font-semibold">${estimatedTax.toFixed(2)}</div>
+          <div className="text-xl font-semibold">
+            {format(estimatedTax)} <span className="text-sm text-gray-500">(base)</span>
+          </div>
+          <div className="text-sm text-gray-500">
+            Converted: {format(convertedTax)}
+          </div>
         </div>
       </div>
     </section>
-)};
+  );
+};
 
 export default TaxPlanningTools;
