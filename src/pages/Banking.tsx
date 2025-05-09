@@ -7,7 +7,7 @@ import AccountLinking from '../components/financial/AccountLinking';
 import TransferPayments from '../components/financial/TransferPayments';
 
 import { BankAccount, BankTransaction } from '../data/mockData';
-import '../styles/Banking.css';
+import '../styles/banking.css';
 
 interface BankingPageProps {
   bankAccounts: BankAccount[];

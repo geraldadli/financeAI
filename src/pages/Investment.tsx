@@ -8,7 +8,7 @@ import MarketTrends from '../components/financial/MarketTrends';
 
 import { FinancialProfile } from '../types/financial';
 import '../index.css';
-import '../styles/Investment.css'; // External styling for this page
+import '../styles/investment.css'; // External styling for this page
 
 interface InvestmentPageProps {
   profile: FinancialProfile;
