@@ -133,7 +133,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, onPageChange }) => {
               <User className="h-5 w-5 text-gray-700" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-800">John Smith</p>
+              <p className="text-sm font-medium text-gray-800">Gerald Adli</p>
               <p className="text-xs text-gray-500">Free Plan</p>
             </div>
           </div>
