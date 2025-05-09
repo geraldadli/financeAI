@@ -254,3 +254,151 @@ export const bankTransactions: BankTransaction[] = [
   },
   // … more …
 ];
+
+// 1) Tax documents & deadlines
+export interface TaxDocument {
+  id: string;
+  name: string;
+  type: 'W-2' | '1099' | 'Receipt' | 'Other';
+  dateUploaded: string;    // ISO string
+}
+export const taxDocuments: TaxDocument[] = [
+  { id: 'd1', name: 'W-2 2024', type: 'W-2', dateUploaded: '2025-01-15T10:00:00Z' },
+  { id: 'd2', name: '1099-DIV 2024', type: '1099', dateUploaded: '2025-02-02T14:30:00Z' },
+];
+
+export interface TaxDeadline {
+  id: string;
+  name: string;
+  deadline: string;       // ISO date
+}
+export const taxDeadlines: TaxDeadline[] = [
+  { id: 'dl1', name: 'File Federal Return', deadline: '2025-04-15' },
+  { id: 'dl2', name: 'State Return', deadline: '2025-04-15' },
+];
+
+// 2) Tax reports & filing history
+export interface TaxReport {
+  id: string;
+  year: number;
+  totalIncome: number;
+  totalTax: number;
+  refundOrOwed: number;
+}
+export const taxReports: TaxReport[] = [
+  { id: 'r2023', year: 2023, totalIncome: 120000, totalTax: 24000, refundOrOwed: 1500 },
+  { id: 'r2024', year: 2024, totalIncome: 130000, totalTax: 26000, refundOrOwed: -500 },
+];
+
+export interface FilingStatus {
+  id: string;
+  year: number;
+  status: 'Filed' | 'Pending' | 'Not Filed';
+  filedDate: string | null;  // ISO date or null
+}
+export const filingStatuses: FilingStatus[] = [
+  { id: 'fs2023', year: 2023, status: 'Filed', filedDate: '2025-03-20' },
+  { id: 'fs2024', year: 2024, status: 'Pending', filedDate: null },
+];
+
+// 3) Deductible expenses
+export interface DeductibleExpense {
+  id: string;
+  description: string;
+  amount: number;
+  category: 'Charity' | 'Business' | 'Health' | 'Education' | 'Other';
+  date: string;            // ISO date
+}
+export const deductibleExpenses: DeductibleExpense[] = [
+  { id: 'e1', description: 'Charity – Red Cross', amount: 500, category: 'Charity', date: '2025-01-10' },
+  { id: 'e2', description: 'Home Office Supplies', amount: 200, category: 'Business', date: '2025-02-05' },
+];
+
+// 1) Goal reminders & notifications
+export interface GoalReminder {
+  id: string;
+  goalId: string;
+  date: string;      // ISO date
+  message: string;
+}
+export const goalReminders: GoalReminder[] = [
+  {
+    id: 'gr1',
+    goalId: 'g1',
+    date: '2025-06-01',
+    message: 'You’ve hit 25% of your Retirement goal!',
+  },
+  {
+    id: 'gr2',
+    goalId: 'g2',
+    date: '2025-07-01',
+    message: 'Halfway to your Vacation fund—keep it up!',
+  },
+  // …more…
+];
+
+// 2) Saving recommendations (to be shown per goal)
+export const savingRecommendations: SavingRecommendation[] = [
+  {
+    id: 'sr1',
+    title: 'Reduce streaming subscriptions',
+    description: 'Cancel or downgrade unused streaming services.',
+    potentialSaving: 20,
+    difficulty: 'easy',
+    category: 'subscriptions',
+  },
+  {
+    id: 'sr2',
+    title: 'Pack lunch twice a week',
+    description: 'Save on eating out by meal-prepping.',
+    potentialSaving: 50,
+    difficulty: 'easy',
+    category: 'spending',
+  },
+  // …more…
+];
+
+
+// 1) Notification preferences
+export interface NotificationPreference {
+  id: string;
+  name: string;
+  enabled: boolean;
+}
+export const notificationPreferences: NotificationPreference[] = [
+  { id: 'n1', name: 'Email Alerts', enabled: true },
+  { id: 'n2', name: 'SMS Notifications', enabled: false },
+  { id: 'n3', name: 'Push Notifications', enabled: true },
+];
+
+// 2) Security & privacy controls
+export interface SecuritySetting {
+  id: string;
+  name: string;
+  enabled: boolean;
+}
+export const securitySettings: SecuritySetting[] = [
+  { id: 's1', name: 'Two‐factor Authentication', enabled: true },
+  { id: 's2', name: 'Save Login & Device Info', enabled: false },
+  { id: 's3', name: 'Share Usage Data', enabled: false },
+];
+
+// 3) Connected accounts (reuse if desired)
+// import { bankAccounts } from './mockData';
+// export { bankAccounts };
+
+// 4) Default currency & time zone
+export const defaultCurrency = 'USD';
+export const defaultTimeZone = 'Asia/Jakarta';
+
+// 5) Report preferences
+export interface ReportPreference {
+  id: string;
+  name: string;
+  value: string;
+}
+export const reportPreferences: ReportPreference[] = [
+  { id: 'r1', name: 'Statement Frequency', value: 'Monthly' },
+  { id: 'r2', name: 'Statement Format', value: 'PDF' },
+  { id: 'r3', name: 'Include Inactive Accounts', value: 'No' },
+];

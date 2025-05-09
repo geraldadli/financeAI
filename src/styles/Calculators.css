@@ -1,0 +1,21 @@
+/* styles/Calculators.css */
+
+/* Section wrapper */
+.calc-section {
+  @apply bg-gray-50 p-6 rounded-2xl shadow-sm;
+}
+
+/* Section titles */
+.calc-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+/* Shared input styling */
+.calc-input {
+  @apply w-full px-3 py-2 border rounded;
+}
+
+/* Ensure consistent grid gaps */
+.calc-section label {
+  @apply flex flex-col text-sm;
+}

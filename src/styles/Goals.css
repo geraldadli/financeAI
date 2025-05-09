@@ -1,0 +1,25 @@
+/* styles/Goals.css */
+
+/* Section wrapper */
+.goals-section {
+  @apply bg-gray-50 p-6 rounded-2xl shadow-sm;
+}
+
+/* Section titles */
+.goals-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+/* Card/list items */
+.goals-card {
+  @apply p-4 border border-gray-200 rounded-lg hover:shadow-md transition;
+}
+
+/* Table overrides (if you add tables later) */
+.goals-table th {
+  @apply bg-gray-100;
+}
+.goals-table td,
+.goals-table th {
+  @apply border-b border-gray-200;
+}

@@ -4,6 +4,10 @@ import Dashboard from './pages/Dashboard';
 import SavingsPage from './pages/SavingsPage';
 import Investment from './pages/Investment';
 import Banking from './pages/Banking';
+import Taxes from './pages/Taxes';
+import Goals from './pages/Goals';
+import Calculators from './pages/Calculators';
+import Settings from './pages/Settings';
 import { mockFinancialProfile, mockSavingRecommendations, mockInvestmentRecommendations, mockTaxRecommendations } from './data/mockData';
 
 function App() {
@@ -43,6 +47,43 @@ function App() {
             bankTransactions={mockFinancialProfile.bankTransactions}
           />
         );
+      case 'taxes':
+        return (
+          <Taxes
+            documents={mockFinancialProfile.taxDocuments}
+            deadlines={mockFinancialProfile.taxDeadlines}
+            reports={mockFinancialProfile.taxReports}
+            expenses={mockFinancialProfile.deductibleExpenses}
+            statuses={mockFinancialProfile.filingStatuses}
+          />
+        );
+      case 'goals':
+        return (
+          <Goals
+            profile={mockFinancialProfile}
+          />
+        );
+      case 'calculators':
+        return (
+          <Calculators
+            profile={mockFinancialProfile}
+            savingRecommendations={mockSavingRecommendations}
+            investmentRecommendations={mockInvestmentRecommendations}
+            taxRecommendations={mockTaxRecommendations}
+          />
+        );
+      case 'settings':
+        return (
+          <Settings
+            notificationPreferences={mockFinancialProfile.notificationPreferences}
+            securitySettings={mockFinancialProfile.securitySettings}
+            bankAccounts={mockFinancialProfile.bankAccounts}
+            defaultCurrency={mockFinancialProfile.defaultCurrency}
+            defaultTimeZone={mockFinancialProfile.defaultTimeZone}
+            reportPreferences={mockFinancialProfile.reportPreferences}
+          />
+        );
+      
       default:
         return (
           <div className="flex flex-col h-screen items-center justify-center">
