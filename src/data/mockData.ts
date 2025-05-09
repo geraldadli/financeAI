@@ -1,5 +1,5 @@
 import { FinancialProfile, SavingRecommendation, InvestmentRecommendation, TaxRecommendation } from '../types/financial';
-
+import { Investment } from '../types/financial';
 // Mock financial profile
 export const mockFinancialProfile: FinancialProfile = {
   monthlyIncome: 5800,
@@ -165,4 +165,92 @@ export const mockTaxRecommendations: TaxRecommendation[] = [
     relevance: 'high',
     deadline: null
   }
+];
+
+// match TransactionHistory’s shape
+export interface Transaction {
+  id: string;
+  date: string;       // ISO string or parsable date
+  type: 'buy' | 'sell';
+  asset: string;
+  quantity: number;
+  price: number;
+}
+
+// example transactions
+export const transactions: Transaction[] = [
+  {
+    id: 'tx1',
+    date: '2025-05-01T14:30:00Z',
+    type: 'buy',
+    asset: 'AAPL',
+    quantity: 10,
+    price: 172.50,
+  },
+  {
+    id: 'tx2',
+    date: '2025-05-03T09:15:00Z',
+    type: 'sell',
+    asset: 'GOOG',
+    quantity: 2,
+    price: 2375.00,
+  },
+  // …more
+];
+
+// match InvestmentWatchlist’s shape
+export const watchlist: Investment[] = [
+  { id: 'w1', name: 'TSLA', type: 'stock', value: 0, returns: 0, risk: 'high' },
+  { id: 'w2', name: 'BTC', type: 'crypto', value: 0, returns: 0, risk: 'high' },
+  // …more
+];
+
+// 1) Bank accounts
+export interface BankAccount {
+  id: string;
+  name: string;
+  type: 'checking' | 'savings' | 'credit_card' | 'loan';
+  balance: number;
+}
+export const bankAccounts: BankAccount[] = [
+  { id: 'b1', name: 'Checking ••••1234', type: 'checking', balance: 2540.75 },
+  { id: 'b2', name: 'Savings ••••5678', type: 'savings', balance: 10230.00 },
+  { id: 'b3', name: 'Credit Card ••••9012', type: 'credit_card', balance: -350.40 },
+];
+
+// 2) Bank transactions
+export interface BankTransaction {
+  id: string;
+  date: string;            // ISO or parsable string
+  amount: number;
+  type: 'debit' | 'credit';
+  description: string;
+  category: 'food' | 'utilities' | 'entertainment' | 'salary' | 'transfer' | 'other';
+}
+export const bankTransactions: BankTransaction[] = [
+  {
+    id: 't1',
+    date: '2025-05-05T10:15:00Z',
+    amount: 2500,
+    type: 'credit',
+    description: 'ACME Corp Payroll',
+    category: 'salary',
+  },
+  {
+    id: 't2',
+    date: '2025-05-06T18:30:00Z',
+    amount: 65.12,
+    type: 'debit',
+    description: 'Grocery Store',
+    category: 'food',
+  },
+  {
+    id: 't3',
+    date: '2025-05-07T08:00:00Z',
+    amount: 120.50,
+    type: 'debit',
+    description: 'Electric Bill',
+    category: 'utilities',
+  },
+  // … more …
 ];

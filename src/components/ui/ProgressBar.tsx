@@ -8,6 +8,7 @@ interface ProgressBarProps {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error';
   className?: string;
+  percentage: number;  // ← add this
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({

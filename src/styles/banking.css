@@ -1,0 +1,29 @@
+/* styles/Banking.css */
+
+/* Section wrapper */
+.banking-section {
+  @apply bg-white p-6 rounded-2xl shadow-sm;
+}
+
+/* Section titles */
+.banking-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+/* Card/list items */
+.banking-card {
+  @apply p-4 border border-gray-200 rounded-lg hover:shadow-md transition;
+}
+
+/* Table overrides */
+.banking-table th {
+  @apply bg-gray-100;
+}
+.banking-table td, .banking-table th {
+  @apply border-b border-gray-200;
+}
+
+/* Buttons */
+.banking-btn {
+  @apply bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition;
+}

@@ -1,0 +1,25 @@
+/* styles/Investment.css */
+
+/* Section wrapper */
+.investment-section {
+  @apply bg-white p-6 rounded-2xl shadow-sm;
+}
+
+/* Section titles */
+.investment-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+/* Card styles for list items */
+.investment-card {
+  @apply p-4 border border-gray-200 rounded-lg hover:shadow-md transition;
+}
+
+/* Table overrides */
+.investment-table th {
+  @apply bg-gray-100;
+}
+
+.investment-table td, .investment-table th {
+  @apply border-b border-gray-200;
+}

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Sidebar from './components/layout/Sidebar';
 import Dashboard from './pages/Dashboard';
 import SavingsPage from './pages/SavingsPage';
+import Investment from './pages/Investment';
+import Banking from './pages/Banking';
 import { mockFinancialProfile, mockSavingRecommendations, mockInvestmentRecommendations, mockTaxRecommendations } from './data/mockData';
 
 function App() {
@@ -23,6 +25,22 @@ function App() {
           <SavingsPage 
             profile={mockFinancialProfile} 
             savingRecommendations={mockSavingRecommendations} 
+          />
+        );
+      case 'investments':
+        return (
+          <Investment
+            profile={mockFinancialProfile}
+            savingRecommendations={mockSavingRecommendations}
+            investmentRecommendations={mockInvestmentRecommendations}
+            taxRecommendations={mockTaxRecommendations}
+          />
+        );
+      case 'banking':
+        return (
+          <Banking
+            bankAccounts={mockFinancialProfile.bankAccounts}
+            bankTransactions={mockFinancialProfile.bankTransactions}
           />
         );
       default:
