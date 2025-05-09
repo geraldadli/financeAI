@@ -7,7 +7,7 @@ import InvestmentWatchlist from '../components/financial/InvestmentWatchlist';
 import MarketTrends from '../components/financial/MarketTrends';
 
 import { FinancialProfile } from '../types/financial';
-import '../styles/investment.css';
+import '../styles/Investment.css';
 
 interface InvestmentPageProps {
   profile: FinancialProfile;
