@@ -12,14 +12,16 @@ import '../styles/banking.css';
 interface BankingPageProps {
   bankAccounts: BankAccount[];
   bankTransactions: BankTransaction[];
+  onPageChange: (pageId: string) => void;
 }
 
-const Banking: React.FC<BankingPageProps> = ({ bankAccounts, bankTransactions }) => {
+const Banking: React.FC<BankingPageProps> = ({ bankAccounts, bankTransactions, onPageChange }) => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Header 
         title="Banking" 
         subtitle="Manage your accounts, transactions, and cash flow" 
+        onPageChange={onPageChange} // Pass onPageChange to Header
       />
 
       <div className="flex-1 overflow-y-auto p-6 bg-grey-50">

@@ -18,11 +18,16 @@ import {
 
 import '../styles/Settings.css';
 
-const Settings: React.FC = () => (
+interface SettingsPageProps {
+  onPageChange: (pageId: string) => void;
+}
+
+const Settings: React.FC<SettingsPageProps> = ({ onPageChange }) => (
   <div className="flex flex-col h-screen overflow-hidden">
     <Header
       title="Settings"
       subtitle="Customize your preferences and account controls"
+      onPageChange={onPageChange} // Pass onPageChange to Header
     />
 
     <div className="flex-1 overflow-y-auto p-6 bg-white">

@@ -1,0 +1,11 @@
+/* styles/Notifications.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.notification-page {
+  @apply bg-gray-50;
+}
+.notification-card {
+  @apply p-4 bg-white border border-gray-200 rounded-lg;
+}

@@ -11,19 +11,23 @@ interface DashboardProps {
   savingRecommendations: SavingRecommendation[];
   investmentRecommendations: InvestmentRecommendation[];
   taxRecommendations: TaxRecommendation[];
+  onPageChange: (pageId: string) => void;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
   profile,
   savingRecommendations,
   investmentRecommendations,
-  taxRecommendations
+  taxRecommendations,
+  onPageChange, 
 }) => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <Header 
-        title="Financial Dashboard" 
-        subtitle="Your financial health at a glance" 
+      <Header
+        title="Financial Dashboard"
+        subtitle="Your financial health at a glance"
+        onOpenSidebar={undefined}
+        onPageChange={onPageChange}
       />
       
       <div className="flex-1 overflow-y-auto p-6 bg-gray-50">

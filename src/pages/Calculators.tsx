@@ -8,11 +8,16 @@ import SavingsGoalCalculator from '../components/financial/SavingsGoalCalculator
 
 import '../styles/Calculators.css';
 
-const Calculators: React.FC = () => (
+interface CalculatorProps {
+  onPageChange: (pageId: string) => void;
+}
+
+const Calculators: React.FC<CalculatorProps> = ({ onPageChange }) => (
   <div className="flex flex-col h-screen overflow-hidden">
     <Header
       title="Calculators"
       subtitle="Plan your finances with our interactive tools"
+      onPageChange={onPageChange} // Pass onPageChange to Header
     />
 
     <div className="flex-1 overflow-y-auto p-6 bg-white">

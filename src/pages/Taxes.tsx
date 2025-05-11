@@ -22,6 +22,7 @@ interface TaxesPageProps {
   reports: TaxReport[];
   expenses: DeductibleExpense[];
   statuses: FilingStatus[];
+  onPageChange: (pageId: string) => void;
 }
 
 const Taxes: React.FC<TaxesPageProps> = ({
@@ -30,11 +31,13 @@ const Taxes: React.FC<TaxesPageProps> = ({
   reports,
   expenses,
   statuses,
+  onPageChange, // Add onPageChange prop
 }) => (
   <div className="flex flex-col h-screen overflow-hidden">
     <Header
       title="Taxes"
       subtitle="Plan, track, and file your tax returns"
+      onPageChange={onPageChange} // Pass onPageChange to Header
     />
 
     <div className="flex-1 overflow-y-auto p-6 bg-white">

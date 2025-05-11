@@ -17,9 +17,10 @@ import { useFormatCurrency } from '../utils/formatCurrency';
 interface SavingsPageProps {
   profile: FinancialProfile;
   savingRecommendations: SavingRecommendation[];
+  onPageChange: (pageId: string) => void; // Add onPageChange prop
 }
 
-const SavingsPage: React.FC<SavingsPageProps> = ({ profile, savingRecommendations }) => {
+const SavingsPage: React.FC<SavingsPageProps> = ({ profile, savingRecommendations, onPageChange }) => {
   const { currency, rate } = useCurrency();
   const format = useFormatCurrency();
 
@@ -43,6 +44,7 @@ const SavingsPage: React.FC<SavingsPageProps> = ({ profile, savingRecommendation
       <Header
         title="Savings & Expenses"
         subtitle="Optimize your spending and increase your savings"
+        onPageChange={onPageChange} // Pass onPageChange to Header
       />
 
       <div className="flex-1 overflow-y-auto p-6 bg-gray-50">

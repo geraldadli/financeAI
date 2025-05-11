@@ -8,32 +8,45 @@ import Taxes from './pages/Taxes';
 import Goals from './pages/Goals';
 import Calculators from './pages/Calculators';
 import Settings from './pages/Settings';
-import { mockFinancialProfile, mockSavingRecommendations, mockInvestmentRecommendations, mockTaxRecommendations } from './data/mockData';
+import NotificationsPage from './pages/Notifications';
+import MessagesPage from './pages/MessagesPage';
+import UpgradePlanPage from './pages/UpgradePlanPage';
+import {
+  mockFinancialProfile,
+  mockSavingRecommendations,
+  mockInvestmentRecommendations,
+  mockTaxRecommendations
+} from './data/mockData';
 
 function App() {
   const [activePage, setActivePage] = useState('dashboard');
 
   const renderPage = () => {
+    const commonProps = { onPageChange: setActivePage };
+
     switch (activePage) {
       case 'dashboard':
         return (
-          <Dashboard 
-            profile={mockFinancialProfile} 
-            savingRecommendations={mockSavingRecommendations} 
-            investmentRecommendations={mockInvestmentRecommendations} 
-            taxRecommendations={mockTaxRecommendations} 
+          <Dashboard
+            {...commonProps}
+            profile={mockFinancialProfile}
+            savingRecommendations={mockSavingRecommendations}
+            investmentRecommendations={mockInvestmentRecommendations}
+            taxRecommendations={mockTaxRecommendations}
           />
         );
       case 'savings':
         return (
-          <SavingsPage 
-            profile={mockFinancialProfile} 
-            savingRecommendations={mockSavingRecommendations} 
+          <SavingsPage
+            {...commonProps}
+            profile={mockFinancialProfile}
+            savingRecommendations={mockSavingRecommendations}
           />
         );
       case 'investments':
         return (
           <Investment
+            {...commonProps}
             profile={mockFinancialProfile}
             savingRecommendations={mockSavingRecommendations}
             investmentRecommendations={mockInvestmentRecommendations}
@@ -43,6 +56,7 @@ function App() {
       case 'banking':
         return (
           <Banking
+            {...commonProps}
             bankAccounts={mockFinancialProfile.bankAccounts}
             bankTransactions={mockFinancialProfile.bankTransactions}
           />
@@ -50,6 +64,7 @@ function App() {
       case 'taxes':
         return (
           <Taxes
+            {...commonProps}
             documents={mockFinancialProfile.taxDocuments}
             deadlines={mockFinancialProfile.taxDeadlines}
             reports={mockFinancialProfile.taxReports}
@@ -60,21 +75,21 @@ function App() {
       case 'goals':
         return (
           <Goals
+            {...commonProps}
             profile={mockFinancialProfile}
           />
         );
       case 'calculators':
         return (
           <Calculators
+            {...commonProps}
             profile={mockFinancialProfile}
-            savingRecommendations={mockSavingRecommendations}
-            investmentRecommendations={mockInvestmentRecommendations}
-            taxRecommendations={mockTaxRecommendations}
           />
         );
       case 'settings':
         return (
           <Settings
+            {...commonProps}
             notificationPreferences={mockFinancialProfile.notificationPreferences}
             securitySettings={mockFinancialProfile.securitySettings}
             bankAccounts={mockFinancialProfile.bankAccounts}
@@ -83,11 +98,41 @@ function App() {
             reportPreferences={mockFinancialProfile.reportPreferences}
           />
         );
-      
+      case 'notifications':
+        return (
+          <NotificationsPage
+            {...commonProps}
+            notifications={mockFinancialProfile.notifications}
+            onMarkAllRead={() => {}}
+            onFilterChange={() => {}}
+          />
+        );
+      case 'messages':
+        return (
+          <MessagesPage
+            {...commonProps}
+            messages={mockFinancialProfile.messages}
+            onMarkAllRead={() => {}}
+            onFilterChange={() => {}}
+          />
+        );
+      case 'upgradeplan':
+        return (
+          <UpgradePlanPage
+            {...commonProps}
+            currentPlan={mockFinancialProfile.currentPlan}
+            availablePlans={mockFinancialProfile.availablePlans}
+            onUpgradePlan={() => {}}
+            onDowngradePlan={() => {}}
+            onCancelPlan={() => {}}
+          />
+        );
       default:
         return (
           <div className="flex flex-col h-screen items-center justify-center">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">{activePage.charAt(0).toUpperCase() + activePage.slice(1)}</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              {activePage.charAt(0).toUpperCase() + activePage.slice(1)}
+            </h1>
             <p className="text-gray-500">This page is under construction</p>
           </div>
         );

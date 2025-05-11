@@ -402,3 +402,38 @@ export const reportPreferences: ReportPreference[] = [
   { id: 'r2', name: 'Statement Format', value: 'PDF' },
   { id: 'r3', name: 'Include Inactive Accounts', value: 'No' },
 ];
+
+export type NotificationType = 'system' | 'message' | 'alert';
+
+export interface NotificationItem {
+  id: string;
+  type: NotificationType;
+  content: string;
+  date: string;       // ISO string
+  read: boolean;
+}
+
+// Example notifications
+export const notifications: NotificationItem[] = [
+  {
+    id: 'n1',
+    type: 'system',
+    content: 'Your password will expire in 5 days.',
+    date: '2025-05-09T14:30:00Z',
+    read: false,
+  },
+  {
+    id: 'n2',
+    type: 'message',
+    content: 'You have a new message from Alice.',
+    date: '2025-05-10T08:15:00Z',
+    read: false,
+  },
+  {
+    id: 'n3',
+    type: 'alert',
+    content: 'Unusual login attempt detected.',
+    date: '2025-05-08T22:45:00Z',
+    read: true,
+  },
+];

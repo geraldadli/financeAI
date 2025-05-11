@@ -11,14 +11,16 @@ import '../styles/Investment.css';
 
 interface InvestmentPageProps {
   profile: FinancialProfile;
+  onPageChange: (pageId: string) => void; // Add onPageChange prop
 }
 
-const Investment: React.FC<InvestmentPageProps> = ({ profile }) => {
+const Investment: React.FC<InvestmentPageProps> = ({ profile, onPageChange }) => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Header 
         title="Investment Overview" 
         subtitle="Track performance, trends, and opportunities" 
+        onPageChange={onPageChange} // Pass onPageChange to Header
       />
       
       <div className="flex-1 overflow-y-auto p-6 bg-grey-50">

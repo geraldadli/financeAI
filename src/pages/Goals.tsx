@@ -12,13 +12,15 @@ import '../styles/Goals.css';
 
 interface GoalsPageProps {
   profile: FinancialProfile;
+  onPageChange: (pageId: string) => void;
 }
 
-const Goals: React.FC<GoalsPageProps> = ({ profile }) => (
+const Goals: React.FC<GoalsPageProps> = ({ profile, onPageChange }) => (
   <div className="flex flex-col h-screen overflow-hidden">
     <Header
       title="Your Goals"
       subtitle="Track progress, set reminders, and stay on target"
+      onPageChange={onPageChange} // Pass onPageChange to Header
     />
 
     <div className="flex-1 overflow-y-auto p-6 bg-white">
